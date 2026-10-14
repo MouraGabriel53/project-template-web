@@ -1,0 +1,11 @@
+
+
+# <type>(<optional scope>): <description>
+#
+# Types: feat, fix, refactor, test, docs, chore, build, ci
+# Scope: the affected feature or area, e.g. auth, checkout, ui
+# Add "!" before ":" for a breaking change, e.g. "refactor!: ..."
+#
+# Leave a blank line after the subject, then explain why the change is needed.
+#
+# Example: feat(checkout): show shipping estimate before payment

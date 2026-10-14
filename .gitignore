@@ -1,0 +1,12 @@
+# ===== IDE =====
+/.idea/
+/.vscode/
+
+# ===== Dependencies and output =====
+node_modules/
+/coverage/
+
+# ===== Local =====
+/.env
+.env*.local
+/.claude/

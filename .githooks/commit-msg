@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mode=${2:-commit}
+subject=$(grep -v '^#' "$1" | grep -m1 -v '^[[:space:]]*$' || true)
+
+types='feat|fix|refactor|test|docs|chore|build|ci'
+pattern="^(${types})(\([a-z0-9-]+\))?!?: .+"
+generated='^(Merge |Revert "|fixup! |squash! |amend! )'
+
+if [[ "$subject" =~ $pattern ]]; then
+  exit 0
+fi
+
+if [[ "$mode" == commit && ( -z "$subject" || "$subject" =~ $generated ) ]]; then
+  exit 0
+fi
+
+cat >&2 <<MSG
+Invalid ${mode} message: "$subject"
+
+Expected: <type>(<optional scope>): <description>
+Types:    ${types//|/, }
+Example:  feat(api): add pagination to orders
+MSG
+exit 1

@@ -1,0 +1,12 @@
+name: Conventions
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+permissions:
+  contents: read
+
+jobs:
+  conventions:
+    uses: MouraGabriel53/project-template/.github/workflows/check-conventions.yml@main
