@@ -29,6 +29,20 @@ Rules:
 - `shared` never imports a feature.
 - Code moves to `shared` only when a second feature needs it.
 
+## Components (React)
+
+When the app uses React, build components with the composition pattern:
+pass content and behavior through `children`, slots and compound components
+(`<Card>`, `<Card.Header>`, `<Card.Body>`) instead of adding a configuration
+prop for each variant.
+
+- A new variant is a new composition, not a new boolean or `variant` prop on
+  an existing component.
+- Compound components share state through context set by the parent, not
+  through props passed down by the caller.
+- Prefer passing a rendered element (`icon={<Icon />}`) or `children` over
+  passing data that the component must know how to render.
+
 ## Features
 
 <!-- One row per feature: what it does and what it exposes. -->
