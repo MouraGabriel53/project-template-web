@@ -88,6 +88,15 @@ flowchart LR
     Api --> Types
 ```
 
+## Mudanças no que já existe
+
+<!-- Uma linha por arquivo já existente que a operação altera, cria ou remove. Remova a seção na primeira operação do contexto. -->
+
+| Onde | Membro | Mudança |
+| --- | --- | --- |
+| `features/user/index.ts` | `RegisterUserPage` | Novo export |
+| `shared/ui/TextField` | prop `error` | Nova: mostra a mensagem embaixo do campo |
+
 ## Tipos
 
 ### User
