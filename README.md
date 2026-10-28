@@ -1,40 +1,72 @@
-# project-template-web
+# <Project name>
 
-Shared conventions for new web apps: Conventional Commits checked locally and
-in CI, a pull request template, and a `docs/` structure for architecture,
-contracts, specs and decisions.
+**<Tagline: the promise of the project in one short line.>**
 
-The code is organized by feature (package-by-feature). The template does not
-pick a framework: build tooling, routing and the folder for framework entry
-points are added when the project is created.
+<What it is and the problem it solves, in one or two sentences.> Built for
+<who uses it>, so they can <the goal they reach with it>.
 
-## What is included
+## Getting started
 
-| Path | Purpose |
-| --- | --- |
-| `.githooks/commit-msg` | Rejects commits that do not follow Conventional Commits |
-| `.gitmessage` | Commit message template opened by `git commit` |
-| `.github/pull_request_template.md` | Default pull request description |
-| `.github/workflows/conventions.yml` | Checks the PR title and every commit of the PR, using the reusable workflow from `MouraGabriel53/project-template` |
-| `.github/dependabot.yml` | Weekly updates for GitHub Actions; add `npm` once `package.json` exists |
-| `docs/` | `architecture.md`, `contracts.md`, `development.md`, `specs/`, `decisions/` |
-| `CLAUDE.md` | Project-specific instructions for Claude Code |
+### 1. Prerequisites
 
-## New project
+<!-- One line per tool, with the minimum version and the command that checks it. -->
+
+- <Tool> <version>: check with `<tool> --version`
+
+### 2. Get the code
 
 ```bash
-gh repo create <name> --private --template MouraGabriel53/project-template-web --clone
-cd <name>
-git config core.hooksPath .githooks
-git config commit.template .gitmessage
+git clone https://github.com/MouraGabriel53/<repo>.git
+cd <repo>
 ```
 
-Then scaffold the framework in the repository, and fill in `README.md`,
-`CLAUDE.md` and `docs/`.
+### 3. Configure
 
-## Commit rules
+```bash
+cp .env.example .env
+```
 
-The allowed types live in `MouraGabriel53/project-template`: the CI check
-calls its reusable workflow, so changing them there changes them here too.
-The local hook (`.githooks/commit-msg`) is a copy; update it when the rules
-change.
+Then fill in `.env`:
+
+<!--
+One row per variable in .env.example, in the same order.
+- Required: "yes" if the app does not start without it.
+- Secret: "yes" if the value must never be committed or shared.
+- How to get it: one of
+    "Default works locally"
+    "Generate: `<command>`"
+    "<Service> → <menu> → <page>"
+If the project reads no configuration, replace this whole step with
+"Nothing to configure." and delete .env.example.
+-->
+
+| Variable | Required | Secret | How to get it |
+| --- | --- | --- | --- |
+| `<VARIABLE>` | yes | no | Default works locally |
+| `<SECRET>` | yes | yes | Generate: `openssl rand -base64 32` |
+| `<API_KEY>` | no | yes | <Service> → <menu> → API keys |
+
+### 4. Run
+
+<!-- The exact commands, e.g. `pnpm install` and `pnpm dev`. -->
+
+```bash
+<install command>
+<run command>
+```
+
+Open <http://localhost:3000>.
+
+## Documentation
+
+Internal documentation is written in Portuguese (pt-BR).
+
+- [Architecture](docs/architecture.md): overview, stack, dependencies, features and routes
+- [API](docs/api.md): the APIs the app consumes and their Swagger
+- [Contexts and operations](docs/README.md#contextos): one spec per operation, with its flow
+- [Decisions](docs/decisions/README.md): why things are the way they are
+
+## Development
+
+System requirements, every command (build, tests, run), CI and the commit
+conventions are in [docs/development.md](docs/development.md).

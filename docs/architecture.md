@@ -1,59 +1,66 @@
-# Architecture
+# Arquitetura
 
-<!-- One paragraph: what the app is, who uses it, and how it is split. Then a diagram of the main flow. -->
+<!-- Visão geral do app. Muda pouco: ao adicionar uma dependência, uma feature, uma rota ou uma chave no navegador. Os fluxos de cada operação ficam nas specs. -->
 
+<Uma frase: o que o app é, quem usa e com quais APIs ele fala.>
+
+```mermaid
+flowchart LR
+    Pessoa --> Rota[routes] --> Feature[features/nome] --> Shared[shared]
+    Feature --> API[(API do backend)]
 ```
-<!-- e.g. Route -> feature page -> feature hooks/services -> backend API -->
-```
 
-## Structure
+## Stack
 
-The code is organized by feature: everything a feature needs (UI, state,
-data access, types, tests) lives in its own folder. Code shared by several
-features lives in `shared/`. Where routes, layouts and framework entry points
-go depends on the framework; record it in the table below.
-
-<!-- Keep this table in sync with the folders. Add one row per feature. -->
-
-| Path | Role | May import |
+| Tecnologia | Versão | Para quê |
 | --- | --- | --- |
-| `<routes>` | Framework entry points (pages, layouts, routing): thin, compose features | features, `shared` |
-| `features/<name>` | One feature: its components, state, data access, types and tests | its own files, `shared`, other features' public entry point |
-| `shared` | Code used by more than one feature: UI primitives, utilities, clients | `shared` |
+| <Framework> | <versão> | Rotas e renderização |
+| <Linguagem> | <versão> | Linguagem |
 
-Rules:
+## Dependências
 
-- A feature exposes what others may use through one public entry point
-  (e.g. `features/<name>/index.ts`). Other code never imports a feature's
-  internal files.
-- `shared` never imports a feature.
-- Code moves to `shared` only when a second feature needs it.
+<!-- Uma linha por dependência adicionada além da stack, com a decisão que a aprovou quando houver. -->
 
-## Components (React)
+| Dependência | Versão | Para quê | Decisão |
+| --- | --- | --- | --- |
 
-When the app uses React, build components with the composition pattern:
-pass content and behavior through `children`, slots and compound components
-(`<Card>`, `<Card.Header>`, `<Card.Body>`) instead of adding a configuration
-prop for each variant.
+## Estrutura
 
-- A new variant is a new composition, not a new boolean or `variant` prop on
-  an existing component.
-- Compound components share state through context set by the parent, not
-  through props passed down by the caller.
-- Prefer passing a rendered element (`icon={<Icon />}`) or `children` over
-  passing data that the component must know how to render.
+O código é organizado por feature: tudo que uma feature precisa (UI, estado,
+acesso a dados, tipos, testes) fica na sua pasta.
+
+| Caminho | Papel | Pode importar |
+| --- | --- | --- |
+| `<routes>` | Pontos de entrada do framework (páginas, layouts): finos, compõem features | features, `shared` |
+| `features/<nome>` | Uma feature: componentes, estado, acesso a dados, tipos e testes | seus arquivos, `shared`, o `index.ts` de outras features |
+| `shared` | Usado por mais de uma feature: UI, utilitários, clientes | `shared` |
+
+- Uma feature expõe o que outras podem usar só pelo seu `index.ts`.
+- `shared` nunca importa uma feature.
+- Código vai para `shared` só quando uma segunda feature precisa dele.
+
+## Componentes (React)
+
+Composição em vez de configuração: conteúdo e comportamento entram por
+`children`, slots e componentes compostos (`<Card>`, `<Card.Header>`).
+
+- Variante nova é composição nova, não um booleano ou prop `variant` novo.
+- Componentes compostos compartilham estado por context do pai.
+- Prefira passar um elemento (`icon={<Icon />}`) a passar dados para o componente renderizar.
 
 ## Features
 
-<!-- One row per feature: what it does and what it exposes. -->
-
-| Feature | What it does | Public entry point exports |
+| Feature | O que faz | Contexto |
 | --- | --- | --- |
 
-## Flows
+## Rotas
 
-<!-- The main flows step by step: first load, authentication, the main user journey, errors. -->
+| Caminho | Feature | Acesso |
+| --- | --- | --- |
 
-## Adding a feature
+## Armazenamento no navegador
 
-<!-- Checklist of the files to touch for the most common kind of change. -->
+<!-- Cookies, localStorage e sessionStorage. -->
+
+| Chave | Onde | Conteúdo | Validade |
+| --- | --- | --- | --- |

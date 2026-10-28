@@ -9,7 +9,7 @@ The PR title check fails if the title does not follow this format.
 <!-- Summary in 1-3 sentences. -->
 
 ## Why
-<!-- Problem or motivation. Link the issue, if any. -->
+<!-- Problem or motivation. Link the issue and the spec, if any. -->
 
 ## How to test
 <!-- Steps to validate locally: pages to open, actions to take, accounts or data needed. -->
@@ -21,5 +21,5 @@ The PR title check fails if the title does not follow this format.
 - [ ] Full test command passes locally (see docs/development.md)
 - [ ] Features import each other only through their public entry point
 - [ ] No new or upgraded dependency without approval
-- [ ] README and environment variable examples updated, if needed
-- [ ] Documentation created or updated (docs/, decisions, specs)
+- [ ] README "Configure" table and `.env.example` updated, if variables changed
+- [ ] Documentation created or updated (spec, architecture, api, decisions)
