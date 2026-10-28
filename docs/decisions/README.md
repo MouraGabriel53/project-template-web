@@ -1,29 +1,13 @@
-# Decisions
+# Decisões
 
-Short records of choices that are not obvious from the code: the context,
-the decision and its consequences. They explain **why** the code is the way
-it is, so nobody "fixes" an intentional choice.
+Escolhas que não são óbvias pelo código, para que ninguém "conserte" uma
+escolha intencional. Modelo: [../_templates/decision.md](../_templates/decision.md).
 
-- One decision per file, numbered: `0001-short-title.md`.
-- A decision is never edited after it is merged. If it changes, write a new
-  one that says which decision it replaces, and mark the old one
-  `Superseded by NNNN`.
+- Uma decisão por arquivo: `NNNN-titulo-curto.md`.
+- Nunca editada depois do merge: se mudar, uma nova a substitui.
+- A spec que a motivou tem o link; não repete o conteúdo.
 
-Template:
+## Índice
 
-```markdown
-# NNNN — Title
-
-- **Status:** accepted
-- **Date:** YYYY-MM-DD
-
-**Context.** What problem or constraint led to the decision.
-
-**Decision.** What was chosen.
-
-**Consequences.** What gets easier, what gets harder, what to watch.
-```
-
-## Index
-
-No decisions recorded yet.
+| Nº | Decisão | Status |
+| --- | --- | --- |
